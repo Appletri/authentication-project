@@ -1,5 +1,6 @@
 /////// app.js
 
+require('dotenv').config();
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const path = require("path");
@@ -9,7 +10,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const mongoDb = "mongodb+srv://Appletri:5u0galAhwvhiqiBr@cluster0.08kn0tc.mongodb.net/test";
+const mongoDb = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.08kn0tc.mongodb.net/test`;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
